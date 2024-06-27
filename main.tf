@@ -79,7 +79,7 @@ resource "aws_route_table_association" "private" {
 
 resource "aws_security_group" "alb" {
   name   = "${var.name}-sg-alb-${var.environment}"
-  vpc_id = var.vpc_id
+  vpc_id = aws_vpc.main.id
  
   ingress {
    protocol         = "tcp"
@@ -108,7 +108,7 @@ resource "aws_security_group" "alb" {
 
 resource "aws_security_group" "ecs_tasks" {
   name   = "${var.name}-sg-task-${var.environment}"
-  vpc_id = var.vpc_id
+  vpc_id = aws_vpc.main.id
  
   ingress {
    protocol         = "tcp"
@@ -282,7 +282,7 @@ resource "aws_alb_target_group" "main" {
   name        = "${var.name}-tg-${var.environment}"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   target_type = "ip"
  
   health_check {

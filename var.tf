@@ -34,11 +34,7 @@ variable "name" {
   default     = "faraz"
 }
 
-variable "vpc_id" {
-  description = "The ID of the VPC"
-  type        = string
-  default     = "vpc-094c5af3f38f9d378"
-}
+
 
 variable "container_port" {
   description = "The port on which the container listens"
